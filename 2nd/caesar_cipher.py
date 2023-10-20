@@ -28,12 +28,12 @@ def make_caesar(input_char:str,shift_bit:int):
         KATAKANA_MIN = 12449
         KATAKANA_MAX = 12542
         
-        if(input_char>HIRAGANA_MIN and input_char < HIRAGANA_MAX):
+        if(input_bytes>=HIRAGANA_MIN and input_bytes <= HIRAGANA_MAX):
             # ひらがな
             q,addition = divmod(shift_bit,HIRAGANA_MAX-HIRAGANA_MIN)
-            output_bytes = fix_difference(input_bytes,addition,HIRAGANA_MAX.HIRAGANA_MIN)
+            output_bytes = fix_difference(input_bytes,addition,HIRAGANA_MAX,HIRAGANA_MIN)
         
-        elif(int(hex(ord(input_char)),16) > KATAKANA_MIN):
+        elif(input_bytes >= KATAKANA_MIN):
             # カタカナ
             q,addition = divmod(shift_bit,KATAKANA_MAX-KATAKANA_MIN)
             output_bytes = fix_difference(input_bytes,addition,KATAKANA_MAX,KATAKANA_MIN)
