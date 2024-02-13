@@ -36,8 +36,7 @@ def LFSR_function(x,layer,return_pattern):
             cycle_flag = False
         else:
             register_list.append(register)
-    print(len(register_list))
-    return
+    return register_list
 
 def plot_xypoint(x_range,y_range):
     # figureオブジェクトの生成
@@ -61,7 +60,7 @@ if __name__ == "__main__":
     # 平方採中法
     sample = [3145,8910,3881]
     for val in sample:
-        print(middle_square_method(val))
+        print("入力データ：{0}->出力データ：{1}".format(val,middle_square_method(val)))
     
     # 線形合同法
     x_val = range(0,256)
@@ -71,4 +70,7 @@ if __name__ == "__main__":
     plot_xypoint(x_range=x_val,y_range=y_val)
 
     # LFSR
-    LFSR_function(x=1,layer=7,return_pattern=(7,1))
+    register_data = LFSR_function(x=1,layer=7,return_pattern=(7,1))
+    for idx,val in enumerate(register_data):
+        if(idx<20 or idx>len(register_data)-3):
+            print("{0}：{1}".format(idx+1,val))
